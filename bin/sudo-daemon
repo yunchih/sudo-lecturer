@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+import sys, os
+from lecturer.watch import Watcher
+
+TARGET_FILE = "lecture-word"
+LECTURE_FILE = "lectures.txt"
+COW_DIR = "/usr/share/cowsay/"
+
+def print_help():
+    print("""
+    Required environment variables:
+        "SUDO_LECTURE_FILE": the `lecture_file` configured in sudoers
+    """)
+    sys.exit(1)
+
+if __name__ == '__main__':
+    
+    if not "SUDO_LECTURE_FILE" in os.environ:
+        print_help()
+
+    target_file = os.environ["SUDO_LECTURE_FILE"]
+    watch = Watcher(target_file)
+    watch.run()
