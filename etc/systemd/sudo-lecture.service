@@ -1,0 +1,9 @@
+[Unit]
+Description=Sudo lecture switcher
+
+[Service]
+Environment=SUDO_LECTURE_FILE=/etc/sudoers-lecture
+ExecStart=/usr/bin/sudo-daemon
+
+[Install]
+WantedBy=multi-user.target
